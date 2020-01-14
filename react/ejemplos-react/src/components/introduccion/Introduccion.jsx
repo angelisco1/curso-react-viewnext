@@ -2,6 +2,7 @@ import React from 'react';
 import CmpSaludo from './CmpSaludo';
 import CmpSaludoFunc from './CmpSaludoFunc';
 import Contador from './Contador';
+import Cuenta from './Cuenta';
 
 class Introduccion extends React.Component {
     constructor(props) {
@@ -10,8 +11,23 @@ class Introduccion extends React.Component {
             credenciales: {
                 email: 'email@gmail.com',
                 pass: 1234
-            }
+            },
+            cuenta: 0
         }
+        this.restar = this.restar.bind(this);
+        this.sumar = this.sumar.bind(this);
+    }
+
+    sumar() {
+        this.setState({
+            cuenta: this.state.cuenta + 1
+        })
+    }
+
+    restar() {
+        this.setState({
+            cuenta: this.state.cuenta - 1
+        })
     }
 
     render() {
@@ -24,7 +40,11 @@ class Introduccion extends React.Component {
                 <CmpSaludo credenciales={this.state.credenciales} />
                 <CmpSaludo nombre="Sara" />
                 <CmpSaludoFunc nombre="Charly" />
-                <Contador />
+                <Contador 
+                    cuenta={this.state.cuenta} 
+                    onRestar={this.restar} 
+                    onSumar={this.sumar} />
+                <Cuenta cuenta={this.state.cuenta} />
             </div>
         )
     }

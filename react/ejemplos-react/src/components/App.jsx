@@ -1,11 +1,13 @@
 import React from 'react';
 import Introduccion from './introduccion/Introduccion';
+import Listas from './listas/Listas';
 
 class App extends React.Component {
     render() {
         return (
             <div>
-                <Introduccion />
+                {/* <Introduccion /> */}
+                <Listas />
             </div>
         )
     }
