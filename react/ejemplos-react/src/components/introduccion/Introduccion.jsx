@@ -28,6 +28,7 @@ class Introduccion extends React.Component {
         this.setState({
             cuenta: this.state.cuenta - 1
         })
+        // console.log('Se resta')
     }
 
     render() {

@@ -48,6 +48,12 @@ const resultado = colores.forEach(color => {
     console.log(color)
 })
 
+function muestraColor(color) {
+    console.log(color)
+}
+
+const resultado = colores.forEach(muestraColor);
+
 // (p1, p2) => {}
 // () => {}
 // p1 => {}

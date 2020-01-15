@@ -6,16 +6,16 @@ export default class Listas extends Component {
         super(props);
         this.state = {
             mascotas: [
-                'Periquito',
-                'Canario',
-                'Tortuga'
+                {id: 0, nombre: 'Periquito'},
+                {id: 1, nombre: 'Canario'},
+                {id: 2, nombre: 'Tortuga'}
             ]
         }
     }
 
     render() {
         const listaComponentesMascotas = this.state.mascotas.map((m, pos) => {
-            return <Mascota key={pos} mascota={m} />
+            return <Mascota key={m.id} mascota={m.nombre} />
         })
         // console.log(listaComponentesMascotas)
         return (

@@ -45,9 +45,9 @@ class Contador extends Component {
         console.log(this)
         return (
             <div>
-                {/* <button type="button" data-num="-1" onClick={this.restar}>-</button>
-                <button type="button" onClick={this.restar2(2)}>-</button>
-                <button type="button" onClick={() => { this.calcularCuenta(-1) }}>-</button> */}
+                {/* <button type="button" data-num="-1" onClick={this.restar}>-</button> */}
+                {/* <button type="button" onClick={this.restar2(2)}>-</button> */}
+                {/* <button type="button" onClick={() => { this.calcularCuenta(-1) }}>-</button> */}
                 <button type="button" onClick={this.props.onRestar}>-</button>
                 <span>Cuenta: {this.props.cuenta}</span>
                 <button type="button" onClick={this.props.onSumar}>+</button>
