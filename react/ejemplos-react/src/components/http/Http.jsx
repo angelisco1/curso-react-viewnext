@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ListaFrases from './ListaFrases'
+import Formulario from './Formulario';
 
 export class Http extends Component {
     constructor(props) {
@@ -10,16 +11,31 @@ export class Http extends Component {
             apellido: '',
             numFrases: 3
         }
+        this.changeFormState = this.changeFormState.bind(this);
+        this.getJokes = this.getJokes.bind(this);
     }
 
     componentDidMount() {
-        fetch('http://api.icndb.com/jokes/random/' + this.state.numFrases)
+        this.getJokes();
+    }
+
+    changeFormState(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    getJokes() {
+        const {nombre, apellido, numFrases} = this.state;
+        let url = 'http://api.icndb.com/jokes/random/' + numFrases;
+        if (nombre && apellido) {
+            url += `?firstName=${nombre}&lastName=${apellido}`;
+        }
+        fetch(url)
             .then(resp => {
-                // console.log(resp);
                 return resp.json();
             })
             .then(datos => {
-                // console.log(datos)
                 this.setState({
                     frases: datos.value
                 })
@@ -28,9 +44,16 @@ export class Http extends Component {
 
     render() {
         // const frases = [{id: 1, joke: 'Joke 1'}]
+        const {nombre, apellido, frases, numFrases} = this.state;
         return (
             <div>
-                <ListaFrases frases={this.state.frases} />
+                <Formulario
+                    nombre={nombre}
+                    apellido={apellido}
+                    numFrases={numFrases}
+                    handleChangeInput={this.changeFormState}
+                    handleSubmit={this.getJokes} />
+                <ListaFrases frases={frases} />
             </div>
         )
     }
